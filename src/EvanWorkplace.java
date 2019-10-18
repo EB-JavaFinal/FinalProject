@@ -6,15 +6,17 @@ public class EvanWorkplace {
     	
     	String playerRace = "empty";
     	String playerClass = "empty";
+    	String [] stats = {"Str", "Dex", "Con", "Int", "Wis", "Cha"};
     	int [] playerStats = {10, 10, 10, 10, 10, 10};
 
         pickRace(playerRace, playerStats);
         pickClass(playerClass);
-        pickStats(playerStats, playerClass);
+        pickStats(playerStats, playerClass, stats);
         
         System.out.println("Race: " + playerRace);
         System.out.println("class: " + playerClass);
        for(int i = 0; i < 6; i++) {
+    	   System.out.print(stats[i] + ": ");
     	   System.out.println(playerStats[i]);
        }
     }
@@ -136,17 +138,19 @@ return;
         
     }
 
-    public static void pickStats(int playerStats[], String playerClass){
+    public static void pickStats(int playerStats[], String playerClass, String stats[]){
+    	
+    	int statPoints = 25;
     	
     	System.out.println("pick your characters Stats. >>>"
     			+ "\nYou are able to increase a stat up to 18(not accounting for racial modifers) or "
     			+ "\ndecrease a stat down to 7(not accounting for racial modifers) to gain more points."
-    			+ "\nStrength: affects your melee combat capacity and how much you can carry"
-    			+ "\nDexterity affects your ranged combat capactiy and reflexes when dodging attacks"
-    			+ "\nConstitution affects your hitpoints and improves fortatude"
-    			+ "\nIntellignce affects your capacity to identify enemeis anf their weaknesses"
-    			+ "\nWisdom affects your perception yo notice traps and improves will saves"
-    			+ "\nCharisma affects your influence on others for persuasion and intimidation");
+    			+ "\n\nStrength: affects your melee combat capacity and how much you can carry"
+    			+ "\nDexterity: affects your ranged combat capactiy and reflexes when dodging attacks"
+    			+ "\nConstitution: affects your hitpoints and improves fortatude"
+    			+ "\nIntellignce: affects your capacity to identify enemeis anf their weaknesses"
+    			+ "\nWisdom: affects your perception yo notice traps and improves will saves"
+    			+ "\nCharisma: affects your influence on others for persuasion and intimidation");
     	
     	if(playerClass.equalsIgnoreCase("Barbarian")) {
     		System.out.println("Barbarians benefit from high Consitution and Strength.");
@@ -175,6 +179,17 @@ return;
         else if(playerClass.equalsIgnoreCase("Wizard")) {
         	System.out.println("Wizards benefit from high Intelligence and Dexterity.");
         }
+    	
+    	do {
+    		System.out.println("You have " + statPoints + " points to use for your stats and"
+    				+ " your current stats are :");
+    		for(int i = 0; i < 6; i++) {
+    	    	   System.out.print(stats[i] + ": ");
+    	    	   System.out.println(playerStats[i]);
+    	       }
+    		
+    		
+    	}while(statPoints == 0 && statPoints >= 0);
     	
 
     }
