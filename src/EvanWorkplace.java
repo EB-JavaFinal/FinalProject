@@ -10,11 +10,13 @@ public class EvanWorkplace {
 
         pickRace(playerRace, playerStats);
         pickClass(playerClass);
-        pickStats(playerStats);
+        pickStats(playerStats, playerClass);
         
         System.out.println("Race: " + playerRace);
         System.out.println("class: " + playerClass);
-        System.out.println("Race: " + playerRace);
+       for(int i = 0; i < 6; i++) {
+    	   System.out.println(playerStats[i]);
+       }
     }
 
     public static void pickRace(String playerRace, int playerStats[]){
@@ -134,9 +136,45 @@ return;
         
     }
 
-    public static void pickStats(int playerStats[]){
+    public static void pickStats(int playerStats[], String playerClass){
     	
-    	System.out.println("");
+    	System.out.println("pick your characters Stats. >>>"
+    			+ "\nYou are able to increase a stat up to 18(not accounting for racial modifers) or "
+    			+ "\ndecrease a stat down to 7(not accounting for racial modifers) to gain more points."
+    			+ "\nStrength: affects your melee combat capacity and how much you can carry"
+    			+ "\nDexterity affects your ranged combat capactiy and reflexes when dodging attacks"
+    			+ "\nConstitution affects your hitpoints and improves fortatude"
+    			+ "\nIntellignce affects your capacity to identify enemeis anf their weaknesses"
+    			+ "\nWisdom affects your perception yo notice traps and improves will saves"
+    			+ "\nCharisma affects your influence on others for persuasion and intimidation");
+    	
+    	if(playerClass.equalsIgnoreCase("Barbarian")) {
+    		System.out.println("Barbarians benefit from high Consitution and Strength.");
+        }
+        else if(playerClass.equalsIgnoreCase("Bard")) {
+        	System.out.println("Bards benefit from high Charisma.");
+        }
+        else if(playerClass.equalsIgnoreCase("Cleric")) {
+        	System.out.println("Clerics benefit from high Charisma and Wisdom.");
+        }
+        else if(playerClass.equalsIgnoreCase("Fighter")) {
+        	System.out.println("Fighters benefit from Strength and Dexterity.");
+        }
+        else if(playerClass.equalsIgnoreCase("Monk")) {
+        	System.out.println("Monk benefit from high Wisdom and Strength or Dexterity.");
+        }
+        else if(playerClass.equalsIgnoreCase("Paladin")) {
+        	System.out.println("Paladins benefit from high Charisma.");
+        }
+        else if(playerClass.equalsIgnoreCase("Rouge")) {
+        	System.out.println("Rouges benefit from high Dexterity and Intelligence.");
+        }
+        else if(playerClass.equalsIgnoreCase("Sorcerer")) {
+        	System.out.println("Sorcerers benefit from high Charisma and Dexterity.");
+        }
+        else if(playerClass.equalsIgnoreCase("Wizard")) {
+        	System.out.println("Wizards benefit from high Intelligence and Dexterity.");
+        }
     	
 
     }
