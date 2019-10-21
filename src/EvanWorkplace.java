@@ -9,8 +9,8 @@ public class EvanWorkplace {
     	String [] stats = {"Str", "Dex", "Con", "Int", "Wis", "Cha"};
     	int [] playerStats = {10, 10, 10, 10, 10, 10};
 
-        pickRace(playerRace, playerStats);
-        pickClass(playerClass);
+       // pickRace(playerRace, playerStats);
+       // pickClass(playerClass);
         pickStats(playerStats, playerClass, stats);
         
         System.out.println("Race: " + playerRace);
@@ -140,6 +140,8 @@ return;
 
     public static void pickStats(int playerStats[], String playerClass, String stats[]){
     	
+    	Scanner input = new Scanner(System.in);
+    	int playerPicker;
     	int statPoints = 25;
     	
     	System.out.println("pick your characters Stats. >>>"
@@ -150,7 +152,7 @@ return;
     			+ "\nConstitution: affects your hitpoints and improves fortatude"
     			+ "\nIntellignce: affects your capacity to identify enemeis anf their weaknesses"
     			+ "\nWisdom: affects your perception yo notice traps and improves will saves"
-    			+ "\nCharisma: affects your influence on others for persuasion and intimidation");
+    			+ "\nCharisma: affects your influence on others for persuasion and intimidation\n");
     	
     	if(playerClass.equalsIgnoreCase("Barbarian")) {
     		System.out.println("Barbarians benefit from high Consitution and Strength.");
@@ -187,9 +189,61 @@ return;
     	    	   System.out.print(stats[i] + ": ");
     	    	   System.out.println(playerStats[i]);
     	       }
+    		System.out.println("pick your characters Stats. >>>"
+        			+ "\n1: Strength"
+        			+ "\n2: Dexterity"
+        			+ "\n3: Constitution"
+        			+ "\n4: Intellignce"
+        			+ "\n5: Wisdom"
+        			+ "\n6: Charisma");
+    		playerPicker = input.nextInt();
+    		for(int i = 0; i < 6; i++) {
+ 	    	 if(playerPicker == i) {
+ 	    		System.out.println("what would you like to change your "+ stats[i - 1] + " to. >>>"
+ 	        			+ "\n7 gives 4 points"
+ 	        			+ "\n8 gives 2 points"
+ 	        			+ "\n9 gives 1 point"
+ 	        			+ "\n10 is the base"
+ 	        			+ "\n11 costs 1 point"
+ 	        			+ "\n12 costs 2 points"
+ 	        			+ "\n13 costs 3 points"
+ 	        			+ "\n14 costs 5 points"
+ 	        			+ "\n15 costs 7 points"
+ 	        			+ "\n16 costs 10 points"
+ 	        			+ "\n17 costs 13 points"
+ 	        			+ "\n18 costs 17 points");
+ 	    		playerPicker = input.nextInt();
+ 	    		
+ 	    		if(playerPicker == 7) {
+ 	    			playerStats[i-1] = 7;
+ 	    			statPoints = statPoints + 4;
+ 	    		}
+ 	    		else if(playerPicker == 8) {
+ 	    			playerStats[i-1] = 8;
+ 	    			statPoints = statPoints + 2;
+ 	    		}
+ 	    		else if(playerPicker == 9) {
+ 	    			playerStats[i-1] = 9;
+ 	    			statPoints = statPoints + 1;
+ 	    		}
+ 	    		else if(playerPicker == 10) {
+ 	    			playerStats[i-1] = 10;
+ 	    			statPoints = statPoints + 1;
+ 	    		}
+ 	    		else if(playerPicker == 14) {
+ 	    			playerStats[i-1] = 14;
+ 	    			statPoints = statPoints - 5;
+ 	    		}
+
+
+
+ 	    	 }
+ 	    	 else {
+ 	    		System.out.println("Invalid entry, Please try again");
+ 	    	 }
+ 	       }
     		
-    		
-    	}while(statPoints == 0 && statPoints >= 0);
+    	}while(statPoints != 0 && statPoints >= 0);
     	
 
     }
