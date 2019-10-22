@@ -142,14 +142,14 @@ return;
     	
     	Scanner input = new Scanner(System.in);
     	int playerPicker;
-    	int statPoints = 25;
+    	int statPoints = 20;
     	
     	System.out.println("pick your characters Stats. >>>"
     			+ "\nYou are able to increase a stat up to 18(not accounting for racial modifers) or "
     			+ "\ndecrease a stat down to 7(not accounting for racial modifers) to gain more points."
     			+ "\n\nStrength: affects your melee combat capacity and how much you can carry"
     			+ "\nDexterity: affects your ranged combat capactiy and reflexes when dodging attacks"
-    			+ "\nConstitution: affects your hitpoints and improves fortatude"
+    			+ "\nConstitution: affects your hitpoints and improves fortitude"
     			+ "\nIntellignce: affects your capacity to identify enemeis anf their weaknesses"
     			+ "\nWisdom: affects your perception yo notice traps and improves will saves"
     			+ "\nCharisma: affects your influence on others for persuasion and intimidation\n");
@@ -189,7 +189,7 @@ return;
     	    	   System.out.print(stats[i] + ": ");
     	    	   System.out.println(playerStats[i]);
     	       }
-    		System.out.println("pick your characters Stats. >>>"
+    		System.out.println("pick the stat you'd like to improve. >>>"
         			+ "\n1: Strength"
         			+ "\n2: Dexterity"
         			+ "\n3: Constitution"
@@ -199,46 +199,18 @@ return;
     		playerPicker = input.nextInt();
     		for(int i = 0; i < 6; i++) {
  	    	 if(playerPicker == i) {
- 	    		System.out.println("what would you like to change your "+ stats[i - 1] + " to. >>>"
- 	        			+ "\n7 gives 4 points"
- 	        			+ "\n8 gives 2 points"
- 	        			+ "\n9 gives 1 point"
- 	        			+ "\n10 is the base"
- 	        			+ "\n11 costs 1 point"
- 	        			+ "\n12 costs 2 points"
- 	        			+ "\n13 costs 3 points"
- 	        			+ "\n14 costs 5 points"
- 	        			+ "\n15 costs 7 points"
- 	        			+ "\n16 costs 10 points"
- 	        			+ "\n17 costs 13 points"
- 	        			+ "\n18 costs 17 points");
+ 	    		System.out.println("what would you like to change your "+ stats[i - 1] + " to. >>>");
  	    		playerPicker = input.nextInt();
  	    		
- 	    		if(playerPicker == 7) {
- 	    			playerStats[i-1] = 7;
- 	    			statPoints = statPoints + 4;
+ 	    		if(playerPicker <= 18 || playerPicker >= 7) {
+ 	    			statPoints = statPoints + (playerStats[i-1] - playerPicker);
+ 	    			playerStats[i-1] = playerPicker;
  	    		}
- 	    		else if(playerPicker == 8) {
- 	    			playerStats[i-1] = 8;
- 	    			statPoints = statPoints + 2;
- 	    		}
- 	    		else if(playerPicker == 9) {
- 	    			playerStats[i-1] = 9;
- 	    			statPoints = statPoints + 1;
- 	    		}
- 	    		else if(playerPicker == 10) {
- 	    			playerStats[i-1] = 10;
- 	    			statPoints = statPoints + 1;
- 	    		}
- 	    		else if(playerPicker == 14) {
- 	    			playerStats[i-1] = 14;
- 	    			statPoints = statPoints - 5;
- 	    		}
-
-
-
+ 	    		else{
+ 	 	    		System.out.println("Invalid entry, Please try again");
+ 	 	    	 }
  	    	 }
- 	    	 else {
+ 	    	 else if(playerPicker != 1 && playerPicker != 2 && playerPicker != 3 && playerPicker != 4 && playerPicker != 5 && playerPicker != 6) {
  	    		System.out.println("Invalid entry, Please try again");
  	    	 }
  	       }
