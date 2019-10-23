@@ -3,4 +3,4 @@ This program is a character creator based off the pathfinder RPG system, it allo
 
 <a href ="https://youtu.be/4idnSSEjt8Y">My video is here</a>
 
-<img src="Java Final EB.png" height = "400" width ="400">
+<img src="Java Final EB.png" height = "600" width ="400">
